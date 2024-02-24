@@ -1107,7 +1107,7 @@ button {
   border-radius: 4px;
   cursor: pointer;
   margin-right: 21px;
-  background-image: url('D:\Portfolio\portfolio-website\src\components\google-color-icon.png'); 
+  /* background-image: url('D:\Portfolio\portfolio-website\src\components\google-color-icon.png');  */
  background-size: contain; 
  background-repeat: no-repeat;
  background-position: center;
@@ -1124,7 +1124,7 @@ button {
   border-radius: 4px;
   cursor: pointer;
   margin-right: 10px;
-  background-image: url('D:\Portfolio\portfolio-website\src\components\apple-icon.png'); 
+  /* background-image: url('D:\Portfolio\portfolio-website\src\components\apple-icon.png');  */
  background-size: contain; 
  background-repeat: no-repeat;
  background-position: center;

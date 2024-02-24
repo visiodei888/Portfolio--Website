@@ -74,7 +74,7 @@ import { Link } from 'react-router-dom';
   return (
     <>
     <div className="bg-div">
-      <div className='c-div'>
+      <div className='c-div' style={{backgroundImage: "url('/w.png')"}}>
       <div className="form-container">
           <form onSubmit={handleSignUp}>
             <div className="button-container">

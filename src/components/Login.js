@@ -87,9 +87,9 @@ const Login = ({ setIsLoggedIn, isLoggedIn}) => {
     <div className="form-container">
         <form onSubmit={handleLogin}>
           <div className="button-container">
-          <button className="google-btn" type='button'>
+          <button className="google-btn" style={{backgroundImage: "url('/google-color-icon.png')"}} type='button'>
           </button>
-          <button className="google-btns" type='button'>
+          <button className="google-btns" style={{backgroundImage: "url('/apple-icon.png')"}} type='button'>
           </button>
           </div>
           <h6 className='continue'>---------------------Or continue with------------------------</h6>
