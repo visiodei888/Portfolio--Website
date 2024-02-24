@@ -83,7 +83,7 @@ const Login = ({ setIsLoggedIn, isLoggedIn}) => {
   
   return (
     <div className="bg-div">
-    <div className='c-div'>
+    <div className='c-div' style={{backgroundImage: "url('/w.png')"}}>
     <div className="form-container">
         <form onSubmit={handleLogin}>
           <div className="button-container">
