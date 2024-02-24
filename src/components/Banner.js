@@ -14,7 +14,7 @@ export const Banner = () => {
   const [text, setText] = useState('');
   const [delta, setDelta] = useState(300 - Math.random() * 100);
   const [index, setIndex] = useState(1);
-  const toRotate = [ "Web Developer", "Web Designer", "UI/UX Designer" ];
+  const toRotate = [ "Fullstack Developer", "ML Aspirant", "Project Management" ];
   const period = 2000;
 
   useEffect(() => {
@@ -60,7 +60,7 @@ export const Banner = () => {
               <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
                 <span className="tagline">Welcome to my Portfolio</span>
                 <h1>{`Hi! I'm Blessymaria`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Web Developer", "Web Designer", "UI/UX Designer" ]'><span className="wrap">{text}</span></span></h1>
-                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                  <p>As a versatile professional, I specialize in fullstack web development, where I seamlessly integrate frontend and backend technologies like HTML, CSS, JavaScript, React, and Node.js to craft dynamic and interactive web applications. Simultaneously, I am an aspiring machine learning enthusiast, driven by a passion for leveraging data to unlock insights. Additionally, my adept project management skills, honed through experience in leading teams, ensure efficient execution from inception to delivery. </p>
                   <button onClick={() => console.log('connect')}>Let’s Connect <ArrowRightCircle size={25} /></button>
                   
 

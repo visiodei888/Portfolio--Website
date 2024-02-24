@@ -90,7 +90,20 @@ db.connect((err) => {
         console.error('Error creating users table:', err.message);
       } else {
         console.log('Users table created successfully.');
-      }})}});
+
+        db.query(`
+        CREATE TABLE IF NOT EXISTS UserComments (
+            comments TEXT,
+            date DATE,
+            userEmail VARCHAR(255)
+        );
+        
+`, (err) => {
+      if (err) {
+        console.error('Error creating comments table:', err.message);
+      } else {
+        console.log('comments table created successfully.');
+      }})}})}});
 
 
       app.post('/signup', (req, res) => {
@@ -128,3 +141,53 @@ db.connect((err) => {
         });
       });
 
+
+      app.get('/users', (req, res) => {
+        // Retrieve all users from the users table
+        db.query('SELECT * FROM users', (err, results) => {
+          if (err) {
+            console.error('Error retrieving users:', err.message);
+            res.status(500).json({ error: 'Internal Server Error' });
+          } else {
+            console.log('Users retrieved successfully.');
+            res.status(200).json(results);
+          }
+        });
+      });
+
+
+      app.post('/comments', async (req, res) => {
+        const { answers, date, userEmail } = req.body;
+      
+        try {
+          // Insert tracking data
+          const insertTrackingDataQuery = `
+            INSERT INTO UserComments (comments, date, userEmail)
+            VALUES (?, ?, ?);
+          `;
+      
+          const trackingDataResult = await db.query(insertTrackingDataQuery, [
+            answers,
+            date,
+            userEmail,
+          ]);
+          
+          console.log('Comments inserted successfully.');
+               
+               
+          res.status(200).json({
+            message: 'Comments submitted successfully',
+            trackingDataId: trackingDataResult.insertId,
+          });
+        } catch (error) {
+          console.error('Error inserting comments:', error.message);
+          res.status(500).json({ error: 'Internal Server Error' });
+        }
+      });
+      
+
+
+
+      app.listen(port, () => {
+        console.log("connected to port 3001")
+      })
