@@ -32,7 +32,7 @@ import { Link } from 'react-router-dom';
       // Implement your signup logic here
       const signUpAsync = async () => {
         try {
-          const response = await fetch('http://localhost:3001/signup', {
+          const response = await fetch('https://portfolio-backend-sy44.onrender.com/auth/signup', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

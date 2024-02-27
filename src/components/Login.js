@@ -7,6 +7,8 @@ import { redirect, useNavigate } from 'react-router-dom';
 import { useUserContext } from './UserContext';
 import { Link } from 'react-router-dom';
 
+import axios from 'axios'
+
 const Login = ({ setIsLoggedIn, isLoggedIn}) => {
   const navigate = useNavigate();
   const { setUserEmailContext } = useUserContext();
@@ -27,25 +29,22 @@ const Login = ({ setIsLoggedIn, isLoggedIn}) => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3001/login', {
-        method: 'POST',
+      const response = await axios.post('https://portfolio-backend-sy44.onrender.com/auth/login', {
+        email,
+        password,
+      }, {
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*', 
         },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
       });
   
-      const data = await response.json();
+      const data = await response.data;
   
       
-      if (response.ok) {
+      if (response.data) {
         console.log('User logged in successfully:', data);
        
-        const userEmail = data.user.email;
+        const userEmail = data.data.email;
         setUserEmailContext(userEmail);
 
         setIsLoggedIn(true);

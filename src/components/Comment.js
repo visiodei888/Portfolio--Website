@@ -1,6 +1,7 @@
 import React, { useState} from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { useUserContext } from './UserContext';
+import axios from  'axios'
 
 const Comment = ({ isLoggedIn}) => {
   // const location = useLocation();
@@ -8,7 +9,7 @@ const Comment = ({ isLoggedIn}) => {
   const { userEmail } = useUserContext();
   // const userEmail = location.state?.userEmail;
   const [answers, setAnswers] = useState('');
-
+  console.log(userEmail)
   console.log("Comment userEmail:", userEmail);
 
   const handleSubmit = async (e) => {
@@ -16,11 +17,11 @@ const Comment = ({ isLoggedIn}) => {
     try {
       
       // const currentDate = new Date().toISOString().slice(0, 19).replace('T', ' ');
-      const currentDate = new Date().toISOString().split('T')[0];
+      // const currentDate = new Date().toISOString().split('T')[0];
       
       const data = {
         answers: answers,
-        date: currentDate,
+        // date: currentDate,
         userEmail: userEmail,
       };
 
@@ -32,15 +33,13 @@ const Comment = ({ isLoggedIn}) => {
         navigate('/login')
       }
 
-      const response = await fetch('http://localhost:3001/comments', {
-        method: 'POST',
+      const response = await axios.post('https://portfolio-backend-sy44.onrender.com/comments/send', data, {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
       });
 
-      if (response.ok && isLoggedIn) {
+      if (response.data.ok && isLoggedIn) {
         navigate("/")
         console.log('Data submitted successfully');
         
